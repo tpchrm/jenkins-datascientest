@@ -43,8 +43,10 @@ pipeline {
                         DOCKERHUB_CREDENTIALS = credentials('DOCKER_HUB_PASS')
                     }
                     steps {
-                        sh 'echo $DOCKERHUB_CREDENTIALS | docker login -u $DOCKERHUB_CREDENTIALS --password-stdin'
-                        sh 'docker push $DOCKER_ID/$DOCKER_IMAGE:$DOCKER_TAG'
+                        sh '''
+                            echo $DOCKERHUB_CREDENTIALS | docker login -u $$DOCKER_ID --password-stdin
+                            docker push $DOCKER_ID/$DOCKER_IMAGE:$DOCKER_TAG
+                        '''
                     }
                 }
                 stage('Merging') {
