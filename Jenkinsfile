@@ -1,9 +1,9 @@
 pipeline {
     agent any
     environment {
-    DOCKER_ID = "tpchrm"
-    DOCKER_IMAGE = "datascientestapi"
-    DOCKER_TAG = "v.${BUILD_ID}.0"
+        DOCKER_ID = "tpchrm"
+        DOCKER_IMAGE = "datascientestapi"
+        DOCKER_TAG = "v.${BUILD_ID}.0"
     }
     stages {
         stage('Building') {
@@ -30,7 +30,9 @@ pipeline {
         stage('User Acceptance') {
             steps {
                 input {
-                    message "Proceed to push to main"
+                    message {
+                        "Proceed to push to main"
+                    }
                     ok "Yes"
                 }
             }
