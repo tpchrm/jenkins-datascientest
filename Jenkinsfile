@@ -44,7 +44,7 @@ pipeline {
                     }
                     steps {
                         sh '''
-                            echo $DOCKERHUB_CREDENTIALS | docker login -u $$DOCKER_ID --password-stdin
+                            echo $DOCKERHUB_CREDENTIALS | docker login -u $DOCKER_ID --password-stdin
                             docker push $DOCKER_ID/$DOCKER_IMAGE:$DOCKER_TAG
                         '''
                     }
